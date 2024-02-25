@@ -1056,34 +1056,97 @@ end)
 
 Item = Window:AddTab({ Title = "Item/Quest", Icon = "swords" })
 
+
+
 ---= ///// Stats \\\\\ =---
 
 Stats = Window:AddTab({ Title = "Stats", Icon = "plus-circle" })
+
+SelectPoint = 1
+Stats:AddSlider("GetSliderPoint", {
+   Title = "Point",
+   Description = "",
+   Default = 1,
+   Min = 0,
+   Max = 100,
+   Rounding = 1,
+   Callback = function(Value)
+      SelectPoint = Value
+   end
+})
+local MeleeS = Stats:AddToggle("MyToggleMelee", {Title = "Melee", Default = false })
+MeleeS.MyToggleMelee:SetValue(false)
+Options:OnChanged(function(v)
+   while task.wait() and v do
+      RS.Remotes.CommF_:InvokeServer("AddPoint", "Melee", SelectPoint)
+  end
+end)
+local DefenseS = Stats:AddToggle("MyToggleDefense", {Title = "Defense", Default = false })
+DefenseS.MyToggleDefense:SetValue(false)
+Options:OnChanged(function(v)
+   while task.wait() and v do
+      RS.Remotes.CommF_:InvokeServer("AddPoint", "Defense", SelectPoint)
+  end
+end)
+local SwordS = Stats:AddToggle("MyToggleSword", {Title = "Sword", Default = false })
+SwordS.MyToggleSword:SetValue(false)
+Options:OnChanged(function(v)
+   while task.wait() and v do
+      RS.Remotes.CommF_:InvokeServer("AddPoint", "Sword", SelectPoint)
+  end
+end)
+local GunS = Stats:AddToggle("MyToggleGun", {Title = "Gun", Default = false })
+GunS.MyToggleGun:SetValue(false)
+Options:OnChanged(function(v)
+   while task.wait() and v do
+      RS.Remotes.CommF_:InvokeServer("AddPoint", "Gun", SelectPoint)
+  end
+end)
+local DevilFruitS = Stats:AddToggle("MyToggleDevilFruit", {Title = "Devil Fruit", Default = false })
+DevilFruitS.MyToggleDevilFruit:SetValue(false)
+Options:OnChanged(function(v)
+   while task.wait() and v do
+      RS.Remotes.CommF_:InvokeServer("AddPoint", "Demon Fruit", SelectPoint)
+  end
+end)
 
 ---= ///// Shop \\\\\ =---
 
 Shop = Window:AddTab({ Title = "Shop", Icon = "shopping-cart" })
 
+
+
 ---= ///// Island \\\\\ =---
 
 Island = Window:AddTab({ Title = "Island", Icon = "palmtree" })
+
+
 
 ---= ///// Dungeon/ESP \\\\\ =---
 
 Raid = Window:AddTab({ Title = "Dungeon/ESP", Icon = "sword" })
 
+
+
 ---= ///// Race V4 \\\\\ =---
 
 RaceV4 = Window:AddTab({ Title = "Race V4", Icon = "chevrons-right" })
+
+
 
 ---= ///// Fruit \\\\\ =---
 
 Fruit = Window:AddTab({ Title = "Fruit", Icon = "apple" })
 
+
+
 ---= ///// Misc \\\\\ =---
 
 Misc = Window:AddTab({ Title = "Misc", Icon = "list-plus" })
 
+
+
 ---= ///// Setting \\\\\ =---
 
 Settings = Window:AddTab({ Title = "Setting", Icon = "settings" })
+
